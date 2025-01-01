@@ -32,8 +32,10 @@
             <div class="room-item">
                 <h3>{{ room.name }}</h3>
                 <p>Hosted by: {{ room.host.username }}</p>
+                {% if request.user == room.host %}
                 <a class="btn-edit" href="{% url 'update-room' room.id %}">Edit</a>
                 <a class="btn-delete" href="{% url 'delete-room' room.id %}">Delete</a>
+                {% endif %}
                 <a href="{% url 'room' room.id %}" class="btn-view">View Details</a>
             </div>
         {% endfor %}
